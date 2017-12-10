@@ -14,7 +14,7 @@ public class Pole extends JButton{	//Tworzy pole-przycisk, przysz³osciowo bedzie
 	
 	Pole(int szerokosc, int wysokosc){
 		super();
-		ImageIcon grafikaPola=new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hex\\hex1.png");
+		ImageIcon grafikaPola=new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hex\\hex3.png");
 		ImageIcon grafikaPolaRollover=new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hex\\hex2.png");
 		ImageIcon grafikaPolaPressed=new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hex\\hex3.png");
 		setIcon(grafikaPola);
