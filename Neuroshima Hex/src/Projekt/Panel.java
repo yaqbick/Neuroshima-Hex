@@ -3,6 +3,11 @@ package Projekt;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -19,8 +24,10 @@ public class Panel extends JPanel implements ActionListener{
 	static JPanel polafunkcyjne= new JPanel();
 	int poziom=50;
 	int pion=50;
+	int k=-1;
 	Icon inny= new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hex\\hex3.png");
-	
+	static ArrayList<String> ArmiaWczytana = new ArrayList<String>();
+	static ArrayList<String> ListaGrafik = new ArrayList<String>();
 	Panel()
 	{
 		 setLayout(null);
@@ -43,7 +50,75 @@ public class Panel extends JPanel implements ActionListener{
 		pion=pion+50;
 		}
 		okienko.add(polafunkcyjne);
+		wczytaj();
+		zapiszGrafike();
 	}
+	public void wczytaj()
+	{
+	 BufferedReader br = null;
+			FileReader fr = null;
+	        String sciezka = "C:\\Users\\Merida\\Documents\\Moje!\\Repozytorium Gry\\Neuroshima Hex\\Borgo.csv";
+			try {
+
+				
+				fr = new FileReader(sciezka);
+				br = new BufferedReader(fr);
+
+				String sCurrentLine;
+
+				while ((sCurrentLine = br.readLine()) != null) {
+					System.out.println(sCurrentLine);
+					ArmiaWczytana.add(sCurrentLine);}
+				
+			  }
+
+			catch (IOException h) {
+
+				h.printStackTrace();
+
+			} finally {
+
+				try {
+
+					if (br != null)
+						br.close();
+
+					if (fr != null)
+						fr.close();
+
+				    }  catch (IOException ex) {
+
+					ex.printStackTrace(); }
+			        }	
+	}
+	
+	public void zapiszGrafike()
+	{
+		java.util.Iterator<String> ite= ArmiaWczytana.iterator();
+	
+		while ( ite.hasNext( ) ) {        	   
+           	String dane= ite.next();
+           	k++;
+           	if(dane.indexOf("Sciezka")==-1)
+           	{}
+           	else
+           	{
+       	    String Parametr=ArmiaWczytana.get(k);
+  			String[] Czesci = Parametr.split(";");
+  			String Fragment= Czesci[0];
+  			String Fragment2= Czesci[1];
+  			ListaGrafik.add(Fragment2);
+  			System.out.print(Czesci[1]);
+          	 }  }}
+          	 
+          	 
+           	 
+           	
+		
+	
+           	 
+           	
+		
 	
 	@Override
 	public void actionPerformed(ActionEvent e)  
@@ -55,7 +130,11 @@ public class Panel extends JPanel implements ActionListener{
 	    {
 	    for(int y=0;y<3;y++)
 	    {
-	    	polawyboru[y].setIcon(inny);	    
+	       Random liczba = new Random();
+	       int losowa;
+	       losowa=liczba.nextInt(2);
+	       Icon inna= new ImageIcon(ListaGrafik.get(losowa));
+	       polawyboru[y].setIcon(inna);	    
 	    }
 	    }
 	}

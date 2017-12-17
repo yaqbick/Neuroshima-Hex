@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -22,6 +23,7 @@ public class Plansza extends JPanel{	//Tworzy tablicê Pól i je po koleji inicjuj
 		setOpaque(false);
 		setBorder(BorderFactory.createTitledBorder("Plansza"));
 		
+
 		mapa=new Pole[rozmiar][rozmiar];
 		for(int y=0; y<rozmiar; y++)
 		{
@@ -40,7 +42,8 @@ public class Plansza extends JPanel{	//Tworzy tablicê Pól i je po koleji inicjuj
 				rzad.add(mapa[x][y]); //dodaje do JPanel obiekt Pole z tablicy, mogê tak zrobiæ bo dziêki dziedziczeniu Pole jest tak¿e JButton'em				
 			}
 		}
-			
+
+	
 	}
 	
 	Boolean isInsideHexagon(int x, int y)
