@@ -18,8 +18,9 @@ public class Gra extends JPanel {	//Inicjuje now¹ planszê, a póŸniej tak¿e gracz
 
 	Plansza plansza;
 	Panel panel;
+	Test test;
 	Druzyna druzyny[];
-	JButton[] polawyboru=new JButton[6];
+	JButton przykladowePole; 
 	Gra(){
 		setBackground( new Color( 0, 0, 0, 0 ) );
 		setOpaque(false);
@@ -34,6 +35,7 @@ public class Gra extends JPanel {	//Inicjuje now¹ planszê, a póŸniej tak¿e gracz
 		panelStol.setBorder(BorderFactory.createTitledBorder("Panel - Stó³"));
 		add(panelStol);
 
+
 		
 		JLabel backgroundImage=new JLabel(new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\t³o.jpg"));
 		//backgroundImage.setBounds(okno.getBounds());
@@ -44,6 +46,8 @@ public class Gra extends JPanel {	//Inicjuje now¹ planszê, a póŸniej tak¿e gracz
 		
 		panel=new Panel();
 		panelPlansza.add(panel);
+		
+		test=new Test();
 		
 		
 	}

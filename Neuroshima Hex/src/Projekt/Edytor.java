@@ -436,7 +436,7 @@ int c;
     
         	
         try {
-        	  FileWriter writer = new FileWriter("Armia.csv");
+        	  FileWriter writer = new FileWriter("Borgo.csv");
               int size = Armia.size();
               for (int i=0;i<size;i++) {
                   String str = Armia.get(i).toString();

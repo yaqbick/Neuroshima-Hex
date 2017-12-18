@@ -28,6 +28,7 @@ public class Panel extends JPanel implements ActionListener{
 	Icon inny= new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hex\\hex3.png");
 	static ArrayList<String> ArmiaWczytana = new ArrayList<String>();
 	static ArrayList<String> ListaGrafik = new ArrayList<String>();
+	static String []sciezka=new String[4];
 	Panel()
 	{
 		 setLayout(null);
@@ -46,8 +47,9 @@ public class Panel extends JPanel implements ActionListener{
 		polawyboru[i].setBounds(poziom, pion+50, 50,50);
 		polawyboru[i].setContentAreaFilled(false);
 		polawyboru[i].setBorder(null);
+		polawyboru[i].addActionListener(this);
 		polafunkcyjne.add(polawyboru[i]);
-		pion=pion+50;
+		pion=pion+50;		
 		}
 		okienko.add(polafunkcyjne);
 		wczytaj();
@@ -67,7 +69,7 @@ public class Panel extends JPanel implements ActionListener{
 				String sCurrentLine;
 
 				while ((sCurrentLine = br.readLine()) != null) {
-					System.out.println(sCurrentLine);
+					//System.out.println(sCurrentLine);
 					ArmiaWczytana.add(sCurrentLine);}
 				
 			  }
@@ -108,7 +110,8 @@ public class Panel extends JPanel implements ActionListener{
   			String Fragment= Czesci[0];
   			String Fragment2= Czesci[1];
   			ListaGrafik.add(Fragment2);
-  			System.out.print(Czesci[1]);
+  			//System.out.print(Czesci[1]);
+  			
           	 }  }}
           	 
           	 
@@ -134,8 +137,27 @@ public class Panel extends JPanel implements ActionListener{
 	       int losowa;
 	       losowa=liczba.nextInt(2);
 	       Icon inna= new ImageIcon(ListaGrafik.get(losowa));
-	       polawyboru[y].setIcon(inna);	    
+	       polawyboru[y].setIcon(inna);	
+	       sciezka[y+1]=inna.toString();
 	    }
+	    }
+	    if(source == polawyboru[0])
+	    {
+	    	sciezka[0]=sciezka[1];
+	    	polawyboru[0].setIcon(inny);
+	    	System.out.println(sciezka[0]);
+	    }
+	    if(source == polawyboru[1])
+	    {
+	    	sciezka[0]=sciezka[2];
+	    	polawyboru[1].setIcon(inny);
+	    	System.out.println(sciezka[0]);
+	    }
+	    if(source == polawyboru[2])
+	    {
+	    	sciezka[0]=sciezka[3];
+	    	polawyboru[2].setIcon(inny);
+	    	System.out.println(sciezka[0]);
 	    }
 	}
 	 public static void main(String[] args) {	        
