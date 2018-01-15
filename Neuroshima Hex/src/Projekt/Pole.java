@@ -25,7 +25,7 @@ public class Pole extends JButton{	//Tworzy pole-przycisk, przysz³osciowo bedzie
 		setOpaque(false);
 		setBackground( new Color( 0, 0, 0, 0 ) );
 		setPreferredSize(new Dimension(szerokosc,wysokosc));
-		
+		int premiaIni=0;
 		//Stworz zeton
 		zeton = new Zeton();
 		//zeton.grafika=;

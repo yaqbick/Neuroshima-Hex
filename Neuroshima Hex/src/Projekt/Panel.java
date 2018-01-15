@@ -16,6 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 // stworzylem klase, ktora bedzie obslugiwac dodawanie i wyswietlanie zetonow obok planszy
 
+import Controllers.ZetonControllers;
+
 public class Panel extends JPanel implements ActionListener{
 	
 	
@@ -29,6 +31,7 @@ public class Panel extends JPanel implements ActionListener{
 	static ArrayList<String> ArmiaWczytana = new ArrayList<String>();
 	static ArrayList<String> ListaGrafik = new ArrayList<String>();
 	static String []sciezka=new String[4];
+
 	Panel()
 	{
 		 setLayout(null);
@@ -54,6 +57,7 @@ public class Panel extends JPanel implements ActionListener{
 		okienko.add(polafunkcyjne);
 		wczytaj();
 		zapiszGrafike();
+		
 	}
 	public void wczytaj()
 	{
@@ -131,33 +135,37 @@ public class Panel extends JPanel implements ActionListener{
         
 	    if(source == dodaj)
 	    {
+	    	int wcisniety=0;
 	    for(int y=0;y<3;y++)
 	    {
 	       Random liczba = new Random();
 	       int losowa;
-	       losowa=liczba.nextInt(2);
+	       losowa=liczba.nextInt(3);
 	       Icon inna= new ImageIcon(ListaGrafik.get(losowa));
 	       polawyboru[y].setIcon(inna);	
 	       sciezka[y+1]=inna.toString();
-	    }
+	    }if(wcisniety==0)
+	    {ZetonControllers.stworzObiekty();}
+	    else {}
+	    wcisniety++;
 	    }
 	    if(source == polawyboru[0])
 	    {
 	    	sciezka[0]=sciezka[1];
 	    	polawyboru[0].setIcon(inny);
-	    	System.out.println(sciezka[0]);
+	    	
 	    }
 	    if(source == polawyboru[1])
 	    {
 	    	sciezka[0]=sciezka[2];
 	    	polawyboru[1].setIcon(inny);
-	    	System.out.println(sciezka[0]);
+	    	
 	    }
 	    if(source == polawyboru[2])
 	    {
 	    	sciezka[0]=sciezka[3];
 	    	polawyboru[2].setIcon(inny);
-	    	System.out.println(sciezka[0]);
+	    
 	    }
 	}
 	 public static void main(String[] args) {	        

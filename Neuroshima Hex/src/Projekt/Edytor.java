@@ -30,6 +30,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
+import Controllers.ZetonControllers;
+
 
 
 
@@ -37,6 +39,7 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 public class Edytor extends JFrame implements ActionListener {
 ArrayList ComboLista = new ArrayList<>(); 	
 static ArrayList<String> Armia = new ArrayList<String>(); 
+static ArrayList<String> ArmiaEfekty = new ArrayList<String>(); 
 static JComboBox [] sciana= new JComboBox[12];
 static JComboBox[] inicjatywa = new JComboBox[2];
 JComboBox List;
@@ -121,14 +124,33 @@ int c;
 	add(sciana[x]);
 	ComboLista.add(sciana[x]);
 	
-
 	wspolrzednay=wspolrzednay+30;
 	x++;
+	}	
+   	wspolrzednay=60;
+	int y=0; 
+	kombo=12;
+	for(int i=0; i<6; i++)
+	{	
+ sciana[x]= new JComboBox();
+ sciana[x].setBounds(350,wspolrzednay,150,20);
+	 sciana[x].addItem("pusty");
+ sciana[x].addItem("pojedynczy cios");
+ sciana[x].addItem("podwojny cios");
+ sciana[x].addItem("potrojny cios");
+ sciana[x].addItem("pojedynczy strzal");
+ sciana[x].addItem("podwojny strzal");
+ sciana[x].addItem("siec");
+ sciana[x].addItem("pancerz"); 
+ sciana[x].addItem("dzialko Gaussa");
+ add(sciana[x]);
+ ComboLista.add(sciana[y]);
+	wspolrzednay=wspolrzednay+30;
+x++;
+y++;
+ repaint();
 	}
-	dodajEfekt=new JButton("+");
-    dodajEfekt.setBounds(220,240,50,20);
-    add(dodajEfekt);
-    dodajEfekt.addActionListener(this);
+	
     
 	mobilnosc=new JRadioButton("mobilnosc");
     mobilnosc.setBounds(50,270,100,20);
@@ -158,19 +180,21 @@ int c;
 	poleinicjatywy.setBounds(120, 360,100,20);
 	add(poleinicjatywy);
 	
-    inicjatywa[0]= new JComboBox();
-    inicjatywa[0].setBounds(100,400,50,20);
-	inicjatywa[0].addItem("0");
-	inicjatywa[0].addItem("1");
-	inicjatywa[0].addItem("2");
-	inicjatywa[0].addItem("3");
-	inicjatywa[0].addItem("nieskonczona");
-    add(inicjatywa[0]);
+	int c=50;
+	for(int i=0;i<2;i++)
+	{
+    inicjatywa[i]= new JComboBox();
+    inicjatywa[i].setBounds(c,400,100,20);
+	inicjatywa[i].addItem("pusty");
+	inicjatywa[i].addItem("0");
+	inicjatywa[i].addItem("1");
+	inicjatywa[i].addItem("2");
+	inicjatywa[i].addItem("3");
+	inicjatywa[i].addItem("nieskonczona");
+    add(inicjatywa[i]);
+    c=c+120;
+	}
     
-	dodajInicjatywe=new JButton("+");
-    dodajInicjatywe.setBounds(100,450,50,20);
-    add(dodajInicjatywe);
-    dodajInicjatywe.addActionListener(this);
     
 	poleIle=new JLabel("Ile Zetonow:" ); 
 	poleIle.setBounds(70, 500,100,20);
@@ -224,32 +248,7 @@ int c;
     	 
 		Object source = e.getSource();
         
-	    if(source == dodajEfekt)
-	    {
-	    	wspolrzednay=60;
-	    	int y=0; 
-	    	kombo=12;
-	    	for(int i=0; i<6; i++)
-	    	{	
-	     sciana[x]= new JComboBox();
-	     sciana[x].setBounds(350,wspolrzednay,150,20);
-	 	 sciana[x].addItem("pusty");
-		 sciana[x].addItem("pojedynczy cios");
-		 sciana[x].addItem("podwojny cios");
-		 sciana[x].addItem("potrojny cios");
-		 sciana[x].addItem("pojedynczy strzal");
-		 sciana[x].addItem("podwojny strzal");
-		 sciana[x].addItem("siec");
-		 sciana[x].addItem("pancerz"); 
-		 sciana[x].addItem("dzialko Gaussa");
-	     add(sciana[x]);
-	     ComboLista.add(sciana[y]);
-	 	wspolrzednay=wspolrzednay+30;
-		x++;
-		y++;
-	     repaint();
-	    	}	    	    	
-	    }
+	    
 	    if (wytrzymalosc.isSelected())
 	    {
 	    	wytrzymaly=1;
@@ -279,19 +278,7 @@ int c;
 	    	 JOptionPane.showMessageDialog(null, "Albo ¿olnierz albo modu³- zdecyduj siê!");
 			 System.exit(0);	
 	    }
-	    if(source == dodajInicjatywe) 
-	    {    
-	    inicjatywa[1]= new JComboBox();
-	    inicjatywa[1].setBounds(160,400,50,20);
-		inicjatywa[1].addItem("0");
-		inicjatywa[1].addItem("1");
-		inicjatywa[1].addItem("2");
-		inicjatywa[1].addItem("3");
-		inicjatywa[1].addItem("nieskonczona");
-	    add(inicjatywa[1]);
-	    repaint();
-	    dodany=1;
-	    }
+
 	    
 	    if(source==wybierzplik)
 	    {
@@ -322,7 +309,8 @@ int c;
 	    {
 	    	if(kombo==12)
 	    	{
-	    	Metody.weryfikacja(this);	    	
+	    	Metody.weryfikacja(this);
+	    	dodaj();
 	    	}
 	    	else
 	    	{
@@ -331,9 +319,9 @@ int c;
 	    }
 	    if(source == zapisz) 
 	    	if(kombo==12)
-	    		Metody.weryfikacja(this);	    	
-	    	else
-	    		zapis();
+	    		Metody.weryfikacja(this);
+	            zapis();
+
 	    
 	    if(source==wyczysc)
 	    { Metody.zeruj(this);}
@@ -392,36 +380,58 @@ int c;
 	
 	public void dodaj()
 	{  
+		//Zeton1 ArmiaDodawana = new Zeton1();
 		numer++;
 		String numerseryjny= String.valueOf(numer);
 		Armia.add(numerseryjny);
+		//ArmiaDodawana.id=numer;
+		
+		
 		name[m]= Nazwa.getText();
 		Armia.add(name[m]);
+		//ArmiaDodawana.nazwa = name[m];
 		x=0;
-		for(int i=0; i<kombo; i++)
-    	{
-			String parametr= sciana[x].getSelectedItem().toString();
-			if(parametr.equals("pusty"))
-			{			
-			}
-			else
-			{
-			Armia.add(parametr+";"+x);	
-			}
-			x++;
-    	}
-		Armia.add(parametry[0]+";"+(mobilnosc.isSelected()? 1 : 0));	// Ternary Operator
-		Armia.add(parametry[1]+";"+wytrzymaly);	
-		Armia.add(parametry[2]+";"+wrog);	
-		Armia.add(parametry[3]+";"+sojusznik);	
 
+		Armia.add(parametry[0]+";"+(mobilnosc.isSelected()? 1 : 0));	// Ternary Operator		
+		//ArmiaDodawana.mobilnosc = mobilnosc.isSelected()? 1 : 0;
+		
+		Armia.add(parametry[1]+";"+wytrzymaly);	
+		//ArmiaDodawana.wytrzymalosc = wytrzymaly;
+		
+		//Armia.add(parametry[2]+";"+wrog);	
+		//Armia.add(parametry[3]+";"+sojusznik);
+		
+        String inicjatywa1=inicjatywa[0].getSelectedItem().toString();
+        Armia.add(parametry[4]+";"+inicjatywa1);
+        String inicjatywa2=inicjatywa[1].getSelectedItem().toString();
+        Armia.add(parametry[5]+";"+inicjatywa2);
+        
 		Armia.add(parametry[6]+";"+sciezka);
 		String ilosc= Ile.getText();
 		Armia.add(parametry[7]+";"+ilosc);
+		
+		for(int i=0; i<6; i++)
+    	{
+			String parametr= sciana[x].getSelectedItem().toString();
+			String parametr2= sciana[x+6].getSelectedItem().toString();
+		
+			Armia.add(parametr+";"+x+";"+parametr2+";"+x+";");
+		    		    
+		    x++;
+    	}
 				
         List.addItem(name[m]);
         m++;
 		repaint();
+		
+		
+		//if(ZetonControllers.DodajNowyZetonDoCsv(ArmiaDodawana))
+		//{
+			// Komunikat o poprawym dodani
+		//}else 
+	//	{
+			// kouminkat o bledzie
+		//}
 		
 	    java.util.Iterator<String> it= Armia.iterator();
         while ( it.hasNext( ) ) {
@@ -450,7 +460,8 @@ int c;
    catch(IOException ioe)
        {
            System.out.println("Error!");
-       }
+       }     
+        
         }
 		 
 
