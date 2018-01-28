@@ -1,17 +1,22 @@
 package Projekt;
 
-import java.awt.EventQueue;
+//klasa uruchamia gre
 
+import java.awt.EventQueue;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class Program{	//Inicjuje aplikacjê okienkow¹ i startuje Grê
+public class Program{	
 	
-	// klasa main otwiera okienko	
-	 public static void main(String[] args) 
-	 { 	 		 		 
-		 //Najbli¿sze 3 linijki to podobno najbardziej zalecany sposób startowania aplikacji okienkowych w Javie
+	//dekklaracja kluczowych zmiennych do tworzenia planszy
+	
+	private static int szerokoscHexa = 120;
+	private static int wysokoscHexa = 138;
+	
+	
+ public static void main(String[] args) 
+	 { 	 		 		 		
 		 EventQueue.invokeLater(new Runnable() {
 				@Override
 				public void run() {
@@ -26,4 +31,13 @@ public class Program{	//Inicjuje aplikacjê okienkow¹ i startuje Grê
 				}
 			}); 
 	 }	
+ 
+ public static int getSzerokoscHexa()
+ {
+	 return szerokoscHexa;
+ }
+ public static int getWysokoscHexa()
+ {
+	 return wysokoscHexa;
+ }
 }

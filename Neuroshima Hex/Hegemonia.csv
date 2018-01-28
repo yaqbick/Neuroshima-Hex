@@ -1,56 +1,56 @@
-5001
-sieciarz
+4001
+Biegacz
 mobilnosc;0
 wytrzymalosc;0
-inicjatywa1;1
+inicjatywa1;2
 inicjatywa2;pusty
-Sciezka;\Grafika\Borgo\sieciarz.png
+Sciezka;\Grafika\Hegemonia\Biegacz.png
 Ilezetonow;1
 pusty;0;pusty;0;
-potrojny cios;1;siec;1;
+pojedynczy cios;1;pusty;1;
 pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
 pusty;5;pusty;5;
-5003
-nozownik
+4003
+Ganger
 mobilnosc;0
 wytrzymalosc;0
 inicjatywa1;3
 inicjatywa2;pusty
-Sciezka;\Grafika\Borgo\nozownik.png
+Sciezka;\Grafika\Hegemonia\Ganger.png
 Ilezetonow;3
-pojedynczycios;0;pusty;0;
+pusty;0;pusty;0;
 pojedynczycios;1;pusty;1;
 pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
 pusty;5;pusty;5;
-5004
-zwiadowca
+4004
+Bydlak
 mobilnosc;0
 wytrzymalosc;0
-inicjatywa1;0
+inicjatywa1;2
 inicjatywa2;pusty
-Sciezka;\Grafika\Borgo\zwiadowca.png
+Sciezka;\Grafika\Hegemonia\Bydlak.png
 Ilezetonow;3
-dodajIni;0;pusty;0;
-dodajIni;1;pusty;1;
-dodajIni;2;pusty;2;
+pojedynczy cios;0;pusty;0;
+pojedynczy cios;1;pusty;1;
+pojedynczy cios;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
 pusty;5;pusty;5;
-5005
-zwiadowca
+4005
+Gladiator
 mobilnosc;0
 wytrzymalosc;0
-inicjatywa1;0
+inicjatywa1;1
 inicjatywa2;pusty
-Sciezka;\Grafika\Borgo\zwiadowca.png
+Sciezka;\Grafika\Hegemonia\Gladiator.png
 Ilezetonow;3
-dodajIni;0;pusty;0;
-dodajIni;1;pusty;1;
-dodajIni;2;pusty;2;
+podwojny cios;0;pancerz;0;
+podwojny cios;1;pancerz;1;
+podwojny cios;2;pancerz;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
 pusty;5;pusty;5;

@@ -1,5 +1,7 @@
 package Projekt;
 
+//klasa tworzy panel do losowania zetonow
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,36 +16,34 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-// stworzylem klase, ktora bedzie obslugiwac dodawanie i wyswietlanie zetonow obok planszy
 
 import Controllers.ZetonControllers;
 
 public class Panel extends JPanel implements ActionListener{
 	
 	
-	JButton[] polawyboru=new JButton[6];
-	JButton dodaj=new JButton("+");
-	static JPanel polafunkcyjne= new JPanel();
-	int poziom=50;
-	int pion=50;
-	int k=-1;
-	Icon inny= new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hex\\hex3.png");
-	static ArrayList<String> ArmiaWczytana = new ArrayList<String>();
-	static ArrayList<String> ListaGrafik = new ArrayList<String>();
-	static String []sciezka=new String[4];
+	private JButton[] polawyboru=new JButton[6];
+	private JButton dodaj=new JButton("+");
+	private JButton szukaj=new JButton("szukaj");
+	private static JPanel polafunkcyjne= new JPanel();
+	private int poziom=50;
+	private int pion=50;
+	private int k=-1;
+	private Icon inny= new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hex\\hex3.png");
+	private  ArrayList<String> ArmiaPierwsza = new ArrayList<String>();
+	private  ArrayList<String> ArmiaDruga = new ArrayList<String>();
+	private  ArrayList<String> ListaGrafikBorgo = new ArrayList<String>();
+	private  ArrayList<String> ListaGrafikHege = new ArrayList<String>();
+	private static String []sciezka=new String[4];
+	int g;
+	int wcisniety=0;
 
 	Panel()
-	{
-		 setLayout(null);
-		 JFrame okienko=new JFrame();
-		 okienko.setSize(200,600);
-	     okienko.setTitle("Test Panelu");
-	     okienko.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         okienko.setVisible(true);
-		
+	{		
 		dodaj.setBounds(50, 50, 70, 70);
-		dodaj.addActionListener(this);
+		dodaj.addActionListener(this);	
         polafunkcyjne.add(dodaj); 
+        
 		for(int i=0; i<3;i++)
 		{
 		polawyboru[i] = new JButton(new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hex\\hex2.png"));	
@@ -54,28 +54,37 @@ public class Panel extends JPanel implements ActionListener{
 		polafunkcyjne.add(polawyboru[i]);
 		pion=pion+50;		
 		}
-		okienko.add(polafunkcyjne);
+		add(polafunkcyjne);
 		wczytaj();
 		zapiszGrafike();
-		
+		ZetonControllers.stworzObiekty(); 
 	}
+	
+	//metoda wczytuje dane o armii z pliku csv i zapisuje je na liscie ArmiaWczytana
+	
 	public void wczytaj()
 	{
+	ArrayList<String> Armie= new ArrayList<String>();
+	Armie.add("\\Borgo.csv");
+	Armie.add("\\Hegemonia.csv");
+	 for( g=0;g<2;g++)
+	 {
 	 BufferedReader br = null;
 			FileReader fr = null;
-	        String sciezka = "C:\\Users\\Merida\\Documents\\Moje!\\Repozytorium Gry\\Neuroshima Hex\\Borgo.csv";
+	        String sciezka = System.getProperty("user.dir")+Armie.get(g);
 			try {
-
 				
 				fr = new FileReader(sciezka);
 				br = new BufferedReader(fr);
 
 				String sCurrentLine;
-
-				while ((sCurrentLine = br.readLine()) != null) {
-					//System.out.println(sCurrentLine);
-					ArmiaWczytana.add(sCurrentLine);}
-				
+                switch(g)
+                {
+                case 0: {while ((sCurrentLine = br.readLine()) != null) {
+					ArmiaPierwsza.add(sCurrentLine);}}	
+                case 1: {while ((sCurrentLine = br.readLine()) != null) {
+					ArmiaDruga.add(sCurrentLine);}}	
+                }
 			  }
 
 			catch (IOException h) {
@@ -97,10 +106,13 @@ public class Panel extends JPanel implements ActionListener{
 					ex.printStackTrace(); }
 			        }	
 	}
+	}
+	
+	// metoda zczytuje wszystkie sciezki do grafiki poszczególnych zetonów i dodaje do listy ListaGrafik
 	
 	public void zapiszGrafike()
 	{
-		java.util.Iterator<String> ite= ArmiaWczytana.iterator();
+		java.util.Iterator<String> ite= ArmiaPierwsza.iterator();
 	
 		while ( ite.hasNext( ) ) {        	   
            	String dane= ite.next();
@@ -109,68 +121,87 @@ public class Panel extends JPanel implements ActionListener{
            	{}
            	else
            	{
-       	    String Parametr=ArmiaWczytana.get(k);
+       	    String Parametr=ArmiaPierwsza.get(k);
   			String[] Czesci = Parametr.split(";");
   			String Fragment= Czesci[0];
   			String Fragment2= Czesci[1];
-  			ListaGrafik.add(Fragment2);
-  			//System.out.print(Czesci[1]);
-  			
-          	 }  }}
-          	 
-          	 
-           	 
-           	
-		
-	
-           	 
-           	
-		
+  			ListaGrafikBorgo.add(Fragment2);
+  			//System.out.println(Czesci[1]);			
+  			}  }
+		java.util.Iterator<String> iter= ArmiaDruga.iterator();
+		k=-1;
+		while ( iter.hasNext( ) ) {        	   
+           	String dane= iter.next();
+           	k++;
+           	if(dane.indexOf("Sciezka")==-1)
+           	{}
+           	else
+           	{
+       	    String Parametr=ArmiaDruga.get(k);
+       	   // System.out.print(Parametr);
+  			String[] Czesci = Parametr.split(";");
+  			String Fragment= Czesci[0];
+  			String Fragment2= Czesci[1];
+  			ListaGrafikHege.add(Fragment2);
+           	}}
+		}	
 	
 	@Override
+	
+	//obsluga przycisków
+	
 	public void actionPerformed(ActionEvent e)  
-	{
-    	 
+	{  	 
 		Object source = e.getSource();
         
 	    if(source == dodaj)
 	    {
-	    	int wcisniety=0;
-	    for(int y=0;y<3;y++)
-	    {
+	      
+	      for(int y=0;y<3;y++)
+	      {
 	       Random liczba = new Random();
 	       int losowa;
-	       losowa=liczba.nextInt(3);
-	       Icon inna= new ImageIcon(ListaGrafik.get(losowa));
+	       Icon inna;
+	       losowa=liczba.nextInt(4);
+	       if(wcisniety%2==0)
+	       {inna= new ImageIcon(System.getProperty("user.dir")+ListaGrafikBorgo.get(losowa));}
+	       else
+	       {inna= new ImageIcon(System.getProperty("user.dir")+ListaGrafikHege.get(losowa));}   
 	       polawyboru[y].setIcon(inna);	
 	       sciezka[y+1]=inna.toString();
-	    }if(wcisniety==0)
-	    {ZetonControllers.stworzObiekty();}
-	    else {}
-	    wcisniety++;
+	       }
+	      wcisniety++;
+	      System.out.println(wcisniety);
 	    }
+	    
+	    
 	    if(source == polawyboru[0])
 	    {
 	    	sciezka[0]=sciezka[1];
 	    	polawyboru[0].setIcon(inny);
-	    	
+	    	ZetonControllers.przerwij=1;
 	    }
 	    if(source == polawyboru[1])
 	    {
 	    	sciezka[0]=sciezka[2];
 	    	polawyboru[1].setIcon(inny);
-	    	
+	    	ZetonControllers.przerwij=1;
 	    }
 	    if(source == polawyboru[2])
 	    {
 	    	sciezka[0]=sciezka[3];
-	    	polawyboru[2].setIcon(inny);
-	    
+	    	polawyboru[2].setIcon(inny);  
+	    	ZetonControllers.przerwij=1;
 	    }
+	}
+	
+	public static String[] getSciezka()
+	{
+		return sciezka;
 	}
 	 public static void main(String[] args) {	        
 
-    System.out.print("dupa"); 
+    System.out.print(""); 
   
 	}
 }
