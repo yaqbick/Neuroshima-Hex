@@ -147,11 +147,7 @@ import Controllers.ZetonControllers;
 		String[] Czesci=koniec.split("\\.");
 	    klucz=Czesci[0];
 	    System.out.println(klucz);
-		//for(int i=1;i<7;i++)
-	//	{
-		//obrocony=sciezka+klucz+i+".png";
-		//ListaObrotu.add(obrocony);
-		//}
+
 	}
 	
 	public void okreslSasiada()
