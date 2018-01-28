@@ -236,7 +236,7 @@ public void przypiszSasiada()
 				{
 			    kliknietePole=pola.get(p);	
 			    kliknietePole.zajete=true;
-				//System.out.println("wspolrzedne pola: "+kliknietePole.getX() + " "+ kliknietePole.getY());
+		
 				obslugaPrzycisku();				
 				}
 			}
