@@ -27,11 +27,12 @@ import Controllers.ZetonControllers;
 	private int rozmiar;
     private	ArrayList<Pole> pola = new ArrayList<Pole>();
 	private Pole kliknietePole;
-    int ob;
 	private Icon obraz;
 	private Icon nowaGrafika;
 	private static int xx;
 	private static int yy;
+	public static int rzedna;
+	public static int odcieta;
     private int n=0;
     private  ArrayList<String> ListaObrotu = new ArrayList<String>();
     private static String sciezka = System.getProperty("user.dir")+"\\Grafika\\Borgo\\";
@@ -196,6 +197,7 @@ import Controllers.ZetonControllers;
 			        ZetonControllers.wybrany.scianaAktywna.get(c).kierunek=ZetonControllers.wybrany.scianaAktywna.get(c).kierunek+ZetonControllers.wybrany.obrot;
 			    	System.out.println(ZetonControllers.wybrany.scianaAktywna.get(c).kierunek);
 			        przypiszSasiada();
+			        czysciciel();
 			     }}}}			     
 	
 public void przypiszSasiada()
@@ -206,16 +208,49 @@ public void przypiszSasiada()
 	System.out.println("Zaatakowane pole!: "+x+" oraz "+y);
 	for(int d=0; d<pola.size();d++)
     {
-	 int rzedna=pola.get(d).x;
-	 int odcieta=pola.get(d).y;
+	 rzedna=pola.get(d).x;
+	 odcieta=pola.get(d).y;
 	 
 	 if(x==rzedna&& y==odcieta)
 	 {
-		Pole atakowane=pola.get(d); 
-		atakowane.setIcon(czarny);
-	 }
+		 if(pola.get(d).zajete==false)
+		 {}
+		 else		 
+		 {System.out.println(pola.get(d).zajete);
+		 ZetonControllers.wyszukajZaatakowanego();
+		//System.out.println(ZetonControllers.zaatakowany.armia);
+	    //System.out.println(ZetonControllers.wybrany.armia);
+		 
+		 if(ZetonControllers.zaatakowany.armia.equals(ZetonControllers.wybrany.armia))
+		 {}
+		 else
+		 {ZetonControllers.zaatakowany.zywotnosc=ZetonControllers.zaatakowany.zywotnosc-1;}
+		 }}
 	 else {}
     }
+}
+
+public void czysciciel()
+{
+	for(int d=0; d<ZetonControllers.ListaObiektowNaPlanszy.size();d++)
+	{
+		if(ZetonControllers.ListaObiektowNaPlanszy.get(d).zywotnosc==0)
+		{
+			int xxx=ZetonControllers.ListaObiektowNaPlanszy.get(d).wspolrzednaX;
+			int yyy=ZetonControllers.ListaObiektowNaPlanszy.get(d).wspolrzednaY;
+			for(int m=0; m<pola.size();m++)
+			{
+				if(pola.get(m).x==xxx&&pola.get(m).y==yyy)
+				{Pole atakowane=pola.get(m); 
+			     atakowane.setIcon(czarny);
+			     ZetonControllers.ListaObiektowNaPlanszy.remove(d);
+			     }
+			}
+		}
+		else
+		{}	
+		
+	}
 }
 	//obsluga klikniec
 	

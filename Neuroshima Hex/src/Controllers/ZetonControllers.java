@@ -24,6 +24,7 @@ public class ZetonControllers {
 	public static ArrayList<Zeton1> ListaObiektowNaPlanszy = new ArrayList<Zeton1>();
 	public static ArrayList<Integer> IdWylosowane=new ArrayList<Integer>();
 	public static Zeton1 wybrany;
+	public static Zeton1 zaatakowany;
 	static int modyfikator;
 	static int g;
     static int juzBylo;
@@ -88,6 +89,23 @@ public class ZetonControllers {
 	}
 		return wybrany;
 	}
+	
+	public static Zeton1 wyszukajZaatakowanego() 
+	{
+		Iterator<Zeton1> ite= ListaObiektowNaPlanszy.iterator();
+         while ( ite.hasNext( ) ) {        	   
+          	Zeton1 dane2= ite.next();
+          	if(dane2.wspolrzednaX==Plansza.rzedna&&dane2.wspolrzednaY==Plansza.odcieta)
+          	{ 
+          		zaatakowany=dane2; 
+          	}
+          	else
+          	{            		      
+          	}
+          	
+	}
+		return zaatakowany;
+	}
 		
 	   // metoda wczytuje dane o armii z listy ArmiaWczytana i tworzy listê obiektów typu ¯eton
 	
@@ -147,6 +165,12 @@ public class ZetonControllers {
 			int wspolrzednaY=0;
 			int obrot=0;
 			int c=8;
+			int zywotnosc=1;
+			String armia;
+		    if(f==0)
+			{armia="Borgo";}
+		    else
+		    {armia="Hegemonia";} 
 			ArrayList<Integer> sciana=new ArrayList<Integer>();
 		    ArrayList<Kierunek> scianaAktywna=new ArrayList<Kierunek>();
 		    ArrayList<String> ListaObrotow= new ArrayList<String>();
@@ -181,7 +205,7 @@ public class ZetonControllers {
 				c++;
 			}
 
-			Zeton1 zetonTemp = new Zeton1(id,nazwa,mobilnosc,wytrzymalosc, inicjatywa,grafika,ilosc, wspolrzednaX,wspolrzednaY,sciana,scianaAktywna, ListaObrotow, obrot);//tu dodaj resztê parametrów do konstruktora pobranych z csv
+			Zeton1 zetonTemp = new Zeton1(id,nazwa,mobilnosc,wytrzymalosc, inicjatywa,grafika,ilosc, wspolrzednaX,wspolrzednaY,sciana,scianaAktywna, ListaObrotow, obrot, zywotnosc, armia);//tu dodaj resztê parametrów do konstruktora pobranych z csv
 		
 			ZetonyWyjsciowe.add(zetonTemp);
 			modyfikator=modyfikator+14;

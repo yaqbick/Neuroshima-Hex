@@ -21,9 +21,11 @@ public class Zeton1 {
 	public  ArrayList<Kierunek> scianaAktywna = new ArrayList<Kierunek>();
 	public ArrayList<String> ListaObrotow= new ArrayList<String>();
 	public int obrot;
+	public int zywotnosc;
+	public String armia;
 	public Zeton1(int id,String nazwa,  int mobilnosc, int wytrzymalosc, int inicjatywa, String grafika, 
 			int ilosc, int wspolrzednaX, int wspolrzednaY, ArrayList<Integer> sciana,ArrayList<Kierunek> scianaAktywna,
-			ArrayList<String> ListaObrotow, int obrot) 
+			ArrayList<String> ListaObrotow, int obrot, int zywotnosc, String armia) 
 	{
 		this.id=id;
 	    this.nazwa=nazwa;
@@ -38,6 +40,8 @@ public class Zeton1 {
 		this.scianaAktywna=scianaAktywna;
 		this.ListaObrotow= ListaObrotow;
 		this.obrot=obrot; 
+		this.zywotnosc=zywotnosc;
+		this.armia=armia;
 	}
 
 	public Zeton1() {}		

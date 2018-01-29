@@ -13,11 +13,11 @@ public class Zolnierz extends Zeton1 {
 	
 	public Zolnierz(int id,String nazwa,  int mobilnosc, int wytrzymalosc, int inicjatywa, String grafika, 
 			int ilosc, int wspolrzednaX, int wspolrzednaY, ArrayList<Integer> sciana, ArrayList<Kierunek> scianaAktywna,
-			ArrayList<String>ListaObrotow,int obrot,int wartoscAtaku)
+			ArrayList<String>ListaObrotow,int obrot,int wartoscAtaku, int zywotnosc, String armia)
 	{
 		super( id, nazwa, mobilnosc,wytrzymalosc,inicjatywa, grafika, 
 			 ilosc,  wspolrzednaX, wspolrzednaY,sciana,scianaAktywna,ListaObrotow,
-			obrot); 
+			obrot,zywotnosc, armia); 
 		this.wartoscAtaku=wartoscAtaku;
 	}
 }
