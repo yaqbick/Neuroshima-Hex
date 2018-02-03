@@ -34,15 +34,29 @@ public class Panel extends JPanel implements ActionListener{
 	private  ArrayList<String> ArmiaDruga = new ArrayList<String>();
 	private  ArrayList<String> ListaGrafikBorgo = new ArrayList<String>();
 	private  ArrayList<String> ListaGrafikHege = new ArrayList<String>();
+	private  ArrayList<String> Sterta = new ArrayList<String>();
 	private static String []sciezka=new String[4];
 	int g;
 	int wcisniety=0;
+	private Icon Borgo=new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Borgo\\sztab.png");
+	private Icon Hege=new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hegemonia\\SztabHege.png");
+	private JButton Sztab1=new JButton(Borgo);
+	private JButton Sztab2=new JButton(Hege);
 
 	Panel()
 	{		
 		dodaj.setBounds(50, 50, 70, 70);
 		dodaj.addActionListener(this);	
-        polafunkcyjne.add(dodaj); 
+        polafunkcyjne.add(dodaj);
+        Sztab1.setContentAreaFilled(false);
+        Sztab1.setBorder(null);
+        Sztab1.addActionListener(this);
+        polafunkcyjne.add(Sztab1);
+        Sztab2.setContentAreaFilled(false);
+        Sztab2.setBorder(null);
+        Sztab2.addActionListener(this);
+        polafunkcyjne.add(Sztab2);
+        
         
 		for(int i=0; i<3;i++)
 		{
@@ -162,16 +176,17 @@ public class Panel extends JPanel implements ActionListener{
 	       Random liczba = new Random();
 	       int losowa;
 	       Icon inna;
-	       losowa=liczba.nextInt(4);
+	       losowa=liczba.nextInt(9);
 	       if(wcisniety%2==0)
 	       {inna= new ImageIcon(System.getProperty("user.dir")+ListaGrafikBorgo.get(losowa));}
 	       else
 	       {inna= new ImageIcon(System.getProperty("user.dir")+ListaGrafikHege.get(losowa));}   
 	       polawyboru[y].setIcon(inna);	
 	       sciezka[y+1]=inna.toString();
+	       Sterta.add(sciezka[y+1]);
 	       }
 	      wcisniety++;
-	      System.out.println(wcisniety);
+	      //System.out.println(wcisniety);
 	    }
 	    
 	    
@@ -193,6 +208,28 @@ public class Panel extends JPanel implements ActionListener{
 	    	polawyboru[2].setIcon(inny);  
 	    	ZetonControllers.przerwij=1;
 	    }
+	    if(source == Sztab1)
+	    {
+	    	sciezka[0]=Borgo.toString();
+	    	Sztab1.setIcon(null);  
+	    	ZetonControllers.przerwij=1;
+	    	wcisniety=1;
+	    }
+	    if(source == Sztab2)
+	    {
+	    	sciezka[0]=Hege.toString();
+	    	Sztab2.setIcon(null);  
+	    	ZetonControllers.przerwij=1;
+	    	wcisniety=2;
+	    }
+	}
+	
+	public void czySiePowtarza()
+	{
+	 for(int i=0;i<Sterta.size();i++)
+	 {
+		 
+	 }
 	}
 	
 	public static String[] getSciezka()

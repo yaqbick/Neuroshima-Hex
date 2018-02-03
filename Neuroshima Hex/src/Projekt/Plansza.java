@@ -191,14 +191,33 @@ import Controllers.ZetonControllers;
 				 xx=pola.get(i).x;
 			     yy=pola.get(i).y;
 			     ZetonControllers.wyszukajPoWspolrzednychNaPlanszy();
-			     //System.out.println(ZetonControllers.wybrany.obrot);
+			   //  System.out.println(yy);
+			    System.out.println(ZetonControllers.wybrany.nazwa);
+			     
 			     for(c=0;c<ZetonControllers.wybrany.scianaAktywna.size();c++)
 			     {
 			        ZetonControllers.wybrany.scianaAktywna.get(c).kierunek=ZetonControllers.wybrany.scianaAktywna.get(c).kierunek+ZetonControllers.wybrany.obrot;
-			    	System.out.println(ZetonControllers.wybrany.scianaAktywna.get(c).kierunek);
+			       // System.out.println(ZetonControllers.wybrany.scianaAktywna.size());
+			    //	System.out.println(ZetonControllers.wybrany.scianaAktywna.get(c).kierunek);
 			        przypiszSasiada();
-			        czysciciel();
-			     }}}}			     
+			       // czysciciel();
+			     }}}
+	    czysciciel(); 
+	    for(int d=0; d<ZetonControllers.ListaObiektowNaPlanszy.size();d++)
+	    {
+	    	if(ZetonControllers.ListaObiektowNaPlanszy.get(d).nazwa.equals("sztab"))
+	    	{
+	    		String punktyBorgo=Integer.toString(ZetonControllers.ListaObiektowNaPlanszy.get(d).zywotnosc);
+	    		Punkty.getBorgo().setText(punktyBorgo);;
+	    	}
+	    	if(ZetonControllers.ListaObiektowNaPlanszy.get(d).nazwa.equals("SztabHege"))
+	    	{
+	    	    String punktyHege=Integer.toString(ZetonControllers.ListaObiektowNaPlanszy.get(d).zywotnosc);
+    		    Punkty.getHege().setText(punktyHege);;}
+	    	else
+	    	{}	
+	    }
+	    }			     
 	
 public void przypiszSasiada()
 {
@@ -216,9 +235,9 @@ public void przypiszSasiada()
 		 if(pola.get(d).zajete==false)
 		 {}
 		 else		 
-		 {System.out.println(pola.get(d).zajete);
+		 {//System.out.println(pola.get(d).zajete);
 		 ZetonControllers.wyszukajZaatakowanego();
-		//System.out.println(ZetonControllers.zaatakowany.armia);
+		 //System.out.println(ZetonControllers.zaatakowany.armia);
 	    //System.out.println(ZetonControllers.wybrany.armia);
 		 
 		 if(ZetonControllers.zaatakowany.armia.equals(ZetonControllers.wybrany.armia))
@@ -229,29 +248,33 @@ public void przypiszSasiada()
 	 else {}
     }
 }
-
 public void czysciciel()
 {
-	for(int d=0; d<ZetonControllers.ListaObiektowNaPlanszy.size();d++)
-	{
-		if(ZetonControllers.ListaObiektowNaPlanszy.get(d).zywotnosc==0)
-		{
-			int xxx=ZetonControllers.ListaObiektowNaPlanszy.get(d).wspolrzednaX;
-			int yyy=ZetonControllers.ListaObiektowNaPlanszy.get(d).wspolrzednaY;
-			for(int m=0; m<pola.size();m++)
-			{
-				if(pola.get(m).x==xxx&&pola.get(m).y==yyy)
-				{Pole atakowane=pola.get(m); 
-			     atakowane.setIcon(czarny);
-			     ZetonControllers.ListaObiektowNaPlanszy.remove(d);
-			     }
-			}
-		}
+	for(int m=0; m<pola.size();m++)
+	{	
+		if(pola.get(m).zajete==false)
+		{}
 		else
-		{}	
-		
-	}
-}
+		{	
+		int xxx=pola.get(m).x;
+		int yyy=pola.get(m).y;
+		for(int d=0; d<ZetonControllers.ListaObiektowNaPlanszy.size();d++)
+		{
+			if(ZetonControllers.ListaObiektowNaPlanszy.get(d).wspolrzednaX==xxx&&ZetonControllers.ListaObiektowNaPlanszy.get(d).wspolrzednaY==yyy)
+			{
+				if(ZetonControllers.ListaObiektowNaPlanszy.get(d).zywotnosc==0) {
+				Pole atakowane=pola.get(m); 
+			    atakowane.setIcon(czarny);
+			    atakowane.zajete=false;
+			    ZetonControllers.ListaObiektowNaPlanszy.remove(d);
+				}
+				else
+				{}
+			}
+			else
+			{}}}}}
+
+
 	//obsluga klikniec
 	
 	@Override
@@ -308,6 +331,7 @@ public void czysciciel()
 		 }	
 		 if(ddd.getKeyCode()== KeyEvent.VK_SPACE)
 		 {
+			// System.out.println(ZetonControllers.ZetonyWyjsciowe.get(9).nazwa);
 			System.exit(c);	
 		 }	
 	}

@@ -24,6 +24,7 @@ public class Gra extends JPanel {
 
 	Plansza plansza;
 	Panel panel;
+	Punkty punkty;
 	
 	Gra(){
 				
@@ -35,6 +36,7 @@ public class Gra extends JPanel {
 		panelPlansza.setLayout(new FlowLayout());
 		panelPlansza.setBorder(BorderFactory.createTitledBorder("Panel - Plansza"));
 		add(panelPlansza);
+
 		JPanel panelStol = new JPanel();
 		panelStol.setLayout(new FlowLayout());
 		panelStol.setBorder(BorderFactory.createTitledBorder("Panel - Stó³"));
@@ -45,7 +47,11 @@ public class Gra extends JPanel {
 		panelPlansza.add(plansza);
 		
 		panel=new Panel();
-		panelPlansza.add(panel);		
+		panelStol.add(panel);
+		
+		punkty= new Punkty();
+		panelPlansza.add(punkty);
+	
 	}
 
 

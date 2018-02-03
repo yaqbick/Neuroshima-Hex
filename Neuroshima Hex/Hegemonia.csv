@@ -12,7 +12,35 @@ pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
 pusty;5;pusty;5;
+4002
+Biegacz
+mobilnosc;0
+wytrzymalosc;0
+inicjatywa1;2
+inicjatywa2;pusty
+Sciezka;\Grafika\Hegemonia\Biegacz.png
+Ilezetonow;1
+pusty;0;pusty;0;
+pojedynczy cios;1;pusty;1;
+pusty;2;pusty;2;
+pusty;3;pusty;3;
+pusty;4;pusty;4;
+pusty;5;pusty;5;
 4003
+Biegacz
+mobilnosc;0
+wytrzymalosc;0
+inicjatywa1;2
+inicjatywa2;pusty
+Sciezka;\Grafika\Hegemonia\Biegacz.png
+Ilezetonow;1
+pusty;0;pusty;0;
+pojedynczy cios;1;pusty;1;
+pusty;2;pusty;2;
+pusty;3;pusty;3;
+pusty;4;pusty;4;
+pusty;5;pusty;5;
+4004
 Ganger
 mobilnosc;0
 wytrzymalosc;0
@@ -26,7 +54,49 @@ pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
 pusty;5;pusty;5;
-4004
+4005
+Ganger
+mobilnosc;0
+wytrzymalosc;0
+inicjatywa1;3
+inicjatywa2;pusty
+Sciezka;\Grafika\Hegemonia\Ganger.png
+Ilezetonow;3
+pusty;0;pusty;0;
+pojedynczycios;1;pusty;1;
+pusty;2;pusty;2;
+pusty;3;pusty;3;
+pusty;4;pusty;4;
+pusty;5;pusty;5;
+4006
+Ganger
+mobilnosc;0
+wytrzymalosc;0
+inicjatywa1;3
+inicjatywa2;pusty
+Sciezka;\Grafika\Hegemonia\Ganger.png
+Ilezetonow;3
+pusty;0;pusty;0;
+pojedynczycios;1;pusty;1;
+pusty;2;pusty;2;
+pusty;3;pusty;3;
+pusty;4;pusty;4;
+pusty;5;pusty;5;
+4007
+Ganger
+mobilnosc;0
+wytrzymalosc;0
+inicjatywa1;3
+inicjatywa2;pusty
+Sciezka;\Grafika\Hegemonia\Ganger.png
+Ilezetonow;3
+pusty;0;pusty;0;
+pojedynczycios;1;pusty;1;
+pusty;2;pusty;2;
+pusty;3;pusty;3;
+pusty;4;pusty;4;
+pusty;5;pusty;5;
+4008
 Bydlak
 mobilnosc;0
 wytrzymalosc;0
@@ -40,7 +110,7 @@ pojedynczy cios;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
 pusty;5;pusty;5;
-4005
+4009
 Gladiator
 mobilnosc;0
 wytrzymalosc;0
@@ -54,3 +124,17 @@ podwojny cios;2;pancerz;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
 pusty;5;pusty;5;
+4010
+SztabHege
+mobilnosc;0
+wytrzymalosc;0
+inicjatywa1;0
+inicjatywa2;pusty
+Sciezka;\Grafika\Hegemonia\SztabHege.png
+Ilezetonow;1
+pojedynczy cios;0;pancerz;0;
+pojedynczy cios;1;pancerz;1;
+pojedynczy cios;2;pancerz;2;
+pojedynczy cios;3;pusty;3;
+pojedynczy cios;4;pusty;4;
+pojedynczy cios;5;pusty;5;

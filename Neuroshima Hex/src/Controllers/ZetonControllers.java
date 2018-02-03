@@ -151,12 +151,12 @@ public class ZetonControllers {
 				ex.printStackTrace(); }
 		        }	
 	
-		for(int i=0;i<4;i++) 
+		for(int i=0;i<10;i++) 
 		{			
 		    int id=Integer.parseInt(ArmiaWczytana.get(0+modyfikator));
 			String nazwa = ArmiaWczytana.get(1+modyfikator); //trzeba zrobiæ split(;) i pobrac odpowiednie wartosci
 			int mobilnosc=	Integer.parseInt(ArmiaWczytana.get(2+modyfikator).split(";")[1]);	
-			int wytrzymalosc=	Integer.parseInt(ArmiaWczytana.get(3+modyfikator).split(";")[1]);
+			int wytrzymalosc=Integer.parseInt(ArmiaWczytana.get(3+modyfikator).split(";")[1]);
 			//RodzajZetonu rodzajzetonu=RodzajZetonu.Sztab ;// okresl rodzaj zetonu(z listy/bazy danych- tu przyk³šdowo sztab)
 			int inicjatywa=	Integer.parseInt(ArmiaWczytana.get(4+modyfikator).split(";")[1]);
 			String grafika=ArmiaWczytana.get(6+modyfikator).split(";")[1];
@@ -165,7 +165,11 @@ public class ZetonControllers {
 			int wspolrzednaY=0;
 			int obrot=0;
 			int c=8;
-			int zywotnosc=1;
+			int zywotnosc;
+			if(nazwa.equals("sztab")||nazwa.equals("SztabHege"))
+			{ zywotnosc=20;}
+			else
+			{ zywotnosc=1;}
 			String armia;
 		    if(f==0)
 			{armia="Borgo";}
@@ -210,6 +214,7 @@ public class ZetonControllers {
 			ZetonyWyjsciowe.add(zetonTemp);
 			modyfikator=modyfikator+14;
 		}
+		
 		}
 		return ZetonyWyjsciowe;
 	}
