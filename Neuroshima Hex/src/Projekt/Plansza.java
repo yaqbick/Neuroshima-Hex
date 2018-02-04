@@ -183,6 +183,7 @@ import Controllers.ZetonControllers;
 	
 	public void analiza()
 	{int tura;
+	fazaModolow();
 	JOptionPane.showMessageDialog(null, "Bitwa!");
 	for(tura=3;tura>-1;tura--)
 	{
@@ -241,16 +242,21 @@ public void przypiszSasiada()
 		 if(pola.get(d).zajete==false)
 		 {}
 		 else		 
-		 {//System.out.println(pola.get(d).zajete);
-		 ZetonControllers.wyszukajZaatakowanego();
-		 //System.out.println(ZetonControllers.zaatakowany.armia);
-	    //System.out.println(ZetonControllers.wybrany.armia);
-		 
+		 {
+		 if(ZetonControllers.wybrany.inicjatywa==100)
+		 { ZetonControllers.wyszukajWspieranego();
+		 if(ZetonControllers.wspierany.armia.equals(ZetonControllers.wybrany.armia))
+		 {ZetonControllers.wspierany.inicjatywa=ZetonControllers.wspierany.inicjatywa+ZetonControllers.wybrany.scianaAktywna.get(c).pierwszyEfekt;}
+		 else
+		 {}}
+		 else
+		 {
+		 ZetonControllers.wyszukajZaatakowanego();		 
 		 if(ZetonControllers.zaatakowany.armia.equals(ZetonControllers.wybrany.armia))
 		 {}
 		 else
 		 {ZetonControllers.zaatakowany.zywotnosc=ZetonControllers.zaatakowany.zywotnosc-ZetonControllers.wybrany.scianaAktywna.get(c).pierwszyEfekt;}
-		 }}
+		 }}}
 	 else {}
     }
 }
@@ -279,6 +285,30 @@ public void czysciciel()
 			}
 			else
 			{}}}}}
+
+public void fazaModolow()
+{
+	for(int i=0; i<pola.size();i++)
+	{
+		if(pola.get(i).zajete==false)
+		{}
+		else
+		{
+			 xx=pola.get(i).x;
+		     yy=pola.get(i).y;
+		     ZetonControllers.wyszukajPoWspolrzednychNaPlanszy();
+		     if(ZetonControllers.wybrany.inicjatywa==100)
+		     {
+		    	  for(c=0;c<ZetonControllers.wybrany.scianaAktywna.size();c++)
+		    	  {
+		    		ZetonControllers.wybrany.scianaAktywna.get(c).kierunek=ZetonControllers.wybrany.scianaAktywna.get(c).kierunek+ZetonControllers.wybrany.obrot; 
+		    		przypiszSasiada();
+		    	  }
+		     }
+		     else {}
+	}
+	}
+}
 
 
 	//obsluga klikniec

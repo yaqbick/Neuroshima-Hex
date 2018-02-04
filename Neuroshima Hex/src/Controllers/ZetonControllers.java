@@ -13,6 +13,7 @@ import java.util.TreeMap;
 
 import Projekt.Edytor;
 import Projekt.Kierunek;
+import Projekt.Modul;
 import Projekt.Panel;
 import Projekt.Plansza;
 
@@ -25,6 +26,7 @@ public class ZetonControllers {
 	public static ArrayList<Integer> IdWylosowane=new ArrayList<Integer>();
 	public static Zeton1 wybrany;
 	public static Zeton1 zaatakowany;
+	public static Zeton1 wspierany;
 	static int modyfikator;
 	static int g;
     static int juzBylo;
@@ -58,7 +60,11 @@ public class ZetonControllers {
                  {
                  case 0:
                  {
-          	     wybrany=new Zolnierz();
+                 if(dane.typ.equals("zolnierz"))
+                 {wybrany=new Zolnierz();}
+                 else
+                 {wybrany=new Modul();}	
+                	 
           	     wybrany=dane; 
           		 IdWylosowane.add(dane.id);
           		// System.out.println(dane.id);
@@ -106,6 +112,23 @@ public class ZetonControllers {
 	}
 		return zaatakowany;
 	}
+	
+	public static Zeton1 wyszukajWspieranego() 
+	{
+		Iterator<Zeton1> ite= ListaObiektowNaPlanszy.iterator();
+         while ( ite.hasNext( ) ) {        	   
+          	Zeton1 dane2= ite.next();
+          	if(dane2.wspolrzednaX==Plansza.rzedna&&dane2.wspolrzednaY==Plansza.odcieta)
+          	{ 
+          		wspierany=dane2; 
+          	}
+          	else
+          	{            		      
+          	}
+          	
+	}
+		return wspierany;
+	}
 		
 	   // metoda wczytuje dane o armii z listy ArmiaWczytana i tworzy listê obiektów typu ¯eton
 	
@@ -151,7 +174,7 @@ public class ZetonControllers {
 				ex.printStackTrace(); }
 		        }	
 	
-		for(int i=0;i<10;i++) 
+		for(int i=0;i<11;i++) 
 		{			
 		    int id=Integer.parseInt(ArmiaWczytana.get(0+modyfikator));
 			String nazwa = ArmiaWczytana.get(1+modyfikator); //trzeba zrobiæ split(;) i pobrac odpowiednie wartosci
@@ -160,7 +183,7 @@ public class ZetonControllers {
 			//RodzajZetonu rodzajzetonu=RodzajZetonu.Sztab ;// okresl rodzaj zetonu(z listy/bazy danych- tu przyk³šdowo sztab)
 			int inicjatywa=	Integer.parseInt(ArmiaWczytana.get(4+modyfikator).split(";")[1]);
 			String grafika=ArmiaWczytana.get(6+modyfikator).split(";")[1];
-			int ilosc=Integer.parseInt(ArmiaWczytana.get(7+modyfikator).split(";")[1]);
+			String typ=ArmiaWczytana.get(7+modyfikator);
 			int wspolrzednaX=0;
 			int wspolrzednaY=0;
 			int obrot=0;
@@ -210,7 +233,7 @@ public class ZetonControllers {
 				c++;
 			}
 
-			Zeton1 zetonTemp = new Zeton1(id,nazwa,mobilnosc,wytrzymalosc, inicjatywa,grafika,ilosc, wspolrzednaX,wspolrzednaY,sciana,scianaAktywna, ListaObrotow, obrot, zywotnosc, armia);//tu dodaj resztê parametrów do konstruktora pobranych z csv
+			Zeton1 zetonTemp = new Zeton1(id,nazwa,mobilnosc,wytrzymalosc, inicjatywa,grafika,typ, wspolrzednaX,wspolrzednaY,sciana,scianaAktywna, ListaObrotow, obrot, zywotnosc, armia);//tu dodaj resztê parametrów do konstruktora pobranych z csv
 		
 			ZetonyWyjsciowe.add(zetonTemp);
 			modyfikator=modyfikator+14;

@@ -14,7 +14,7 @@ public class Zeton1 {
 	public int wytrzymalosc;
 	public int inicjatywa;
 	public String grafika;
-	public int ilosc;
+	public String typ;
 	public int wspolrzednaX;
 	public int wspolrzednaY;
 	public ArrayList<Integer> sciana = new ArrayList<Integer>();
@@ -24,7 +24,7 @@ public class Zeton1 {
 	public int zywotnosc;
 	public String armia;
 	public Zeton1(int id,String nazwa,  int mobilnosc, int wytrzymalosc, int inicjatywa, String grafika, 
-			int ilosc, int wspolrzednaX, int wspolrzednaY, ArrayList<Integer> sciana,ArrayList<Kierunek> scianaAktywna,
+			String typ, int wspolrzednaX, int wspolrzednaY, ArrayList<Integer> sciana,ArrayList<Kierunek> scianaAktywna,
 			ArrayList<String> ListaObrotow, int obrot, int zywotnosc, String armia) 
 	{
 		this.id=id;
@@ -33,7 +33,7 @@ public class Zeton1 {
 		this.wytrzymalosc=wytrzymalosc;	
 		this.inicjatywa=inicjatywa;
 		this.grafika=grafika;
-		this.ilosc=ilosc;
+		this.typ=typ;
 		this.wspolrzednaX=wspolrzednaX;
 		this.wspolrzednaY=wspolrzednaY;
 		this.sciana=sciana;
