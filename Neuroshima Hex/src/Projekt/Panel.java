@@ -37,6 +37,7 @@ public class Panel extends JPanel implements ActionListener{
 	private  ArrayList<String> Sterta = new ArrayList<String>();
 	private static String []sciezka=new String[4];
 	int g;
+	int r=9;
 	int wcisniety=0;
 	private Icon Borgo=new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Borgo\\sztab.png");
 	private Icon Hege=new ImageIcon(System.getProperty("user.dir")+"\\Grafika\\Hegemonia\\SztabHege.png");
@@ -72,6 +73,7 @@ public class Panel extends JPanel implements ActionListener{
 		wczytaj();
 		zapiszGrafike();
 		ZetonControllers.stworzObiekty(); 
+		System.out.println(ListaGrafikHege.get(9));
 	}
 	
 	//metoda wczytuje dane o armii z pliku csv i zapisuje je na liscie ArmiaWczytana
@@ -174,16 +176,28 @@ public class Panel extends JPanel implements ActionListener{
 	      for(int y=0;y<3;y++)
 	      {
 	       Random liczba = new Random();
+	       Random liczba2 = new Random();
 	       int losowa;
+	       int losowa2;
 	       Icon inna;
-	       losowa=liczba.nextInt(9);
+	    
+	    
 	       if(wcisniety%2==0)
-	       {inna= new ImageIcon(System.getProperty("user.dir")+ListaGrafikBorgo.get(losowa));}
+	       {
+	    	losowa=liczba.nextInt(ListaGrafikBorgo.size());
+	    	inna= new ImageIcon(System.getProperty("user.dir")+ListaGrafikBorgo.get(losowa));
+	        ListaGrafikBorgo.remove(losowa);
+	       }
 	       else
-	       {inna= new ImageIcon(System.getProperty("user.dir")+ListaGrafikHege.get(losowa));}   
+	       {
+	    	losowa2=liczba2.nextInt(ListaGrafikHege.size());
+	    	inna= new ImageIcon(System.getProperty("user.dir")+ListaGrafikHege.get(losowa2));
+	        ListaGrafikHege.remove(losowa2);
+	       }  
+	       
 	       polawyboru[y].setIcon(inna);	
 	       sciezka[y+1]=inna.toString();
-	       Sterta.add(sciezka[y+1]);
+	       
 	       }
 	      wcisniety++;
 	      //System.out.println(wcisniety);
@@ -214,6 +228,8 @@ public class Panel extends JPanel implements ActionListener{
 	    	Sztab1.setIcon(null);  
 	    	ZetonControllers.przerwij=1;
 	    	wcisniety=1;
+	    	ListaGrafikBorgo.remove(9);
+	    	
 	    }
 	    if(source == Sztab2)
 	    {
@@ -221,16 +237,11 @@ public class Panel extends JPanel implements ActionListener{
 	    	Sztab2.setIcon(null);  
 	    	ZetonControllers.przerwij=1;
 	    	wcisniety=2;
+	    	ListaGrafikHege.remove(9);
 	    }
 	}
 	
-	public void czySiePowtarza()
-	{
-	 for(int i=0;i<Sterta.size();i++)
-	 {
-		 
-	 }
-	}
+
 	
 	public static String[] getSciezka()
 	{

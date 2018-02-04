@@ -202,8 +202,9 @@ public class ZetonControllers {
 			    if(parametr.indexOf("pusty")==0)
 				{}
 				else
-				{		
-				Kierunek K= new Kierunek(ktora,parametr, parametr2);	
+				{	
+				int parametr1=Integer.parseInt(parametr);	
+				Kierunek K= new Kierunek(ktora,parametr1, parametr2);	
 				scianaAktywna.add(K);
 				}
 				c++;

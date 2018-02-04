@@ -7,7 +7,7 @@ inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\sieciarz.png
 Ilezetonow;1
 pusty;0;pusty;0;
-potrojny cios;1;pusty;1;
+3;1;pusty;1;
 pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
@@ -21,7 +21,7 @@ inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\sieciarz.png
 Ilezetonow;1
 pusty;0;pusty;0;
-potrojny cios;1;pusty;1;
+3;1;pusty;1;
 pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
@@ -34,8 +34,8 @@ inicjatywa1;3
 inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\nozownik.png
 Ilezetonow;3
-pojedynczycios;0;pusty;0;
-pojedynczycios;1;pusty;1;
+1;0;pusty;0;
+1;1;pusty;1;
 pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
@@ -48,8 +48,8 @@ inicjatywa1;3
 inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\nozownik.png
 Ilezetonow;3
-pojedynczycios;0;pusty;0;
-pojedynczycios;1;pusty;1;
+1;0;pusty;0;
+1;1;pusty;1;
 pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
@@ -62,8 +62,8 @@ inicjatywa1;3
 inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\nozownik.png
 Ilezetonow;3
-pojedynczycios;0;pusty;0;
-pojedynczycios;1;pusty;1;
+1;0;pusty;0;
+1;1;pusty;1;
 pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
@@ -76,8 +76,8 @@ inicjatywa1;3
 inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\nozownik.png
 Ilezetonow;3
-pojedynczycios;0;pusty;0;
-pojedynczycios;1;pusty;1;
+1;0;pusty;0;
+1;1;pusty;1;
 pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
@@ -90,9 +90,9 @@ inicjatywa1;0
 inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\supermutant.png
 Ilezetonow;1
-dodajIni;0;pusty;0;
-dodajIni;1;pusty;1;
-dodajIni;2;pusty;2;
+2;0;pusty;0;
+2;1;pusty;1;
+2;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
 pusty;5;pusty;5;
@@ -105,7 +105,7 @@ inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\silacz.png
 Ilezetonow;3
 pusty;0;pusty;0;
-podwojnycios;1;pusty;1;
+2;1;pusty;1;
 pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
@@ -119,7 +119,7 @@ inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\silacz.png
 Ilezetonow;3
 pusty;0;pusty;0;
-podwojnycios;1;pusty;1;
+2;1;pusty;1;
 pusty;2;pusty;2;
 pusty;3;pusty;3;
 pusty;4;pusty;4;
@@ -132,9 +132,9 @@ inicjatywa1;0
 inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\sztab.png
 Ilezetonow;1
-pojedynczy cios;0;pancerz;0;
-pojedynczy cios;1;pancerz;1;
-pojedynczy cios;2;pancerz;2;
-pojedynczy cios;3;pusty;3;
-pojedynczy cios;4;pusty;4;
-pojedynczy cios;5;pusty;5;
+1;0;pancerz;0;
+1;1;pancerz;1;
+1;2;pancerz;2;
+1;3;pusty;3;
+1;4;pusty;4;
+1;5;pusty;5;
