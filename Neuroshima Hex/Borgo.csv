@@ -86,7 +86,7 @@ pusty;5;pusty;5;
 supermutant
 mobilnosc;0
 wytrzymalosc;0
-inicjatywa1;0
+inicjatywa1;2
 inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\supermutant.png
 zolnierz
@@ -100,7 +100,7 @@ pusty;5;pusty;5;
 silacz
 mobilnosc;0
 wytrzymalosc;0
-inicjatywa1;0
+inicjatywa1;2
 inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\silacz.png
 zolnierz
@@ -114,7 +114,7 @@ pusty;5;pusty;5;
 silacz
 mobilnosc;0
 wytrzymalosc;0
-inicjatywa1;0
+inicjatywa1;2
 inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\silacz.png
 zolnierz
@@ -145,6 +145,20 @@ wytrzymalosc;0
 inicjatywa1;100
 inicjatywa2;pusty
 Sciezka;\Grafika\Borgo\zwiadowca.png
+modul
+1;0;pancerz;0;
+1;1;pancerz;1;
+1;2;pancerz;2;
+pusty;3;pusty;3;
+pusty;4;pusty;4;
+pusty;5;pusty;5;
+5012
+oficer
+mobilnosc;0
+wytrzymalosc;0
+inicjatywa1;100
+inicjatywa2;pusty
+Sciezka;\Grafika\Borgo\oficer.png
 modul
 1;0;pancerz;0;
 1;1;pancerz;1;

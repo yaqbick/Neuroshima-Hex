@@ -174,7 +174,7 @@ public class ZetonControllers {
 				ex.printStackTrace(); }
 		        }	
 	
-		for(int i=0;i<11;i++) 
+		for(int i=0;i<12;i++) 
 		{			
 		    int id=Integer.parseInt(ArmiaWczytana.get(0+modyfikator));
 			String nazwa = ArmiaWczytana.get(1+modyfikator); //trzeba zrobiæ split(;) i pobrac odpowiednie wartosci

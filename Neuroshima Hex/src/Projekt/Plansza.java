@@ -139,13 +139,16 @@ import Controllers.ZetonControllers;
 	
 	public  void  wyszukaj()
 	{
-		int liczba;
+		int liczba=0;
 		String Parametr=Panel.getSciezka()[0];
-		if(Parametr.indexOf("Borgo")==0)
-		{liczba=78;}	
+		System.out.println(Parametr);
+		if(Parametr.indexOf("Borgo")==-1)
+		{liczba=82;}		
 		else
-		{liczba=82;}
+		{liczba=78;}
+		System.out.println(liczba);
 		String koniec=Parametr.substring(liczba);
+		System.out.println(koniec);
 		String[] Czesci=koniec.split("\\.");
 	    klucz=Czesci[0];
 	    System.out.println(klucz);
@@ -246,7 +249,7 @@ public void przypiszSasiada()
 		 if(ZetonControllers.wybrany.inicjatywa==100)
 		 { ZetonControllers.wyszukajWspieranego();
 		 if(ZetonControllers.wspierany.armia.equals(ZetonControllers.wybrany.armia))
-		 {ZetonControllers.wspierany.inicjatywa=ZetonControllers.wspierany.inicjatywa+ZetonControllers.wybrany.scianaAktywna.get(c).pierwszyEfekt;}
+		 {okreslRodzajWsparcia();}
 		 else
 		 {}}
 		 else
@@ -310,6 +313,22 @@ public void fazaModolow()
 	}
 }
 
+public void okreslRodzajWsparcia()
+{
+	if(ZetonControllers.wybrany.nazwa.equals("zwiadowca")||ZetonControllers.wybrany.nazwa.equals("ZwiadowcaHege"))
+	{  
+		if(ZetonControllers.wspierany.typ.equals("zolnierz"))
+		ZetonControllers.wspierany.inicjatywa=ZetonControllers.wspierany.inicjatywa+ZetonControllers.wybrany.scianaAktywna.get(c).pierwszyEfekt;}
+    if(ZetonControllers.wybrany.nazwa.equals("medyk")||ZetonControllers.wybrany.nazwa.equals("MedykHege"))
+    {ZetonControllers.wspierany.zywotnosc=ZetonControllers.wspierany.zywotnosc+ZetonControllers.wybrany.scianaAktywna.get(c).pierwszyEfekt;}
+    if(ZetonControllers.wybrany.nazwa.equals("oficer")||ZetonControllers.wybrany.nazwa.equals("OficerHege"))
+    { for(int l=0;l<ZetonControllers.wspierany.scianaAktywna.size();l++)
+      {
+    	ZetonControllers.wspierany.scianaAktywna.get(l).pierwszyEfekt=ZetonControllers.wspierany.scianaAktywna.get(l).pierwszyEfekt+ZetonControllers.wybrany.scianaAktywna.get(c).pierwszyEfekt;
+    	//System.out.println(ZetonControllers.wspierany.scianaAktywna.get(l).pierwszyEfekt);
+      }
+    }
+}
 
 	//obsluga klikniec
 	

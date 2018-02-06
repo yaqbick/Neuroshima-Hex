@@ -73,7 +73,7 @@ public class Panel extends JPanel implements ActionListener{
 		wczytaj();
 		zapiszGrafike();
 		ZetonControllers.stworzObiekty(); 
-		System.out.println(ListaGrafikHege.get(9));
+		//System.out.println(ListaGrafikHege.get(9));
 	}
 	
 	//metoda wczytuje dane o armii z pliku csv i zapisuje je na liscie ArmiaWczytana
@@ -128,6 +128,9 @@ public class Panel extends JPanel implements ActionListener{
 	
 	public void zapiszGrafike()
 	{
+		String bitwa="\\Grafika\\Borgo\\bitwa.png";
+		ListaGrafikBorgo.add(bitwa);
+		
 		java.util.Iterator<String> ite= ArmiaPierwsza.iterator();
 	
 		while ( ite.hasNext( ) ) {        	   
@@ -209,6 +212,8 @@ public class Panel extends JPanel implements ActionListener{
 	    	sciezka[0]=sciezka[1];
 	    	polawyboru[0].setIcon(inny);
 	    	ZetonControllers.przerwij=1;
+	    	if(sciezka[0].indexOf("bitwa")==-1)
+	    	{}	
 	    }
 	    if(source == polawyboru[1])
 	    {
